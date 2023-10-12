@@ -1,6 +1,6 @@
 # KoreanApp
 
-This template should help get you started developing with Vue 3 in Vite.
+The Korean app is a simple flash cards app like for Korean learner. New features will be developped along the way. 
 
 ## Recommended IDE Setup
 
