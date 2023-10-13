@@ -7,6 +7,8 @@ const questionText = ref("")
 const rightButtonText = ref("click to start")
 const word = ref("")
 const translation = ref("")
+const level1 = ref(words["datasets"][0])
+const level2 = ref(words["datasets"][1])
 let wordId = 0
 
 function getRandomInt(max) {
@@ -34,19 +36,21 @@ function nextWord(level, unit, random) {
   <div class="container">
     <header class="unselectable">
       <ul>
-        <li><span class="menuOption">LEVEL 1</span>
-          <!-- <div class="dropdown-content">
-            <p class="test">unit1</p>
-            <p>unit2</p>
-            <p>unit3</p>
-          </div> -->
+        <li class="dropdown"><a class="dropbtn">LEVEL 1</a>
+          <div class="dropdown-content">
+            <a v-for="unit in level1">{{ unit.name }}</a>
+          </div>
         </li>
-        <li><span class="menuOption">LEVEL 2</span></li>
+        <li class="dropdown"><a class="dropbtn">LEVEL 2</a>
+          <div class="dropdown-content">
+            <a v-for="unit in level2">{{ unit.name }}</a>
+          </div>
+        </li>
       </ul>
     </header>
     <main>
       <div @click="showTranslation()" class="center unselectable" id="top">{{ questionText }}</div>
-      <div class="bottom center unselectable" id="left">Study again</div>
+      <div @click="test()" class="bottom center unselectable" id="left">Study again</div>
       <div @click="nextWord(1, 2, false)" class="bottom center unselectable" id="right">{{ rightButtonText }}</div>
     </main>
   </div>
@@ -55,6 +59,8 @@ function nextWord(level, unit, random) {
 
 
 <style scoped>
+
+
 .container {
   font-family: sans-serif;
   background-color: rgb(241, 241, 241);
@@ -99,22 +105,6 @@ main {
   height: 25%;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  z-index: 1;
-}
-
-.menuOption {
-  margin-right: 30px;
-  display: inline-block;
-}
-
-.menuOption:hover {
-  display: block;
-  color: grey;
-}
-
 #top:hover {
   cursor: help;
   color: grey;
@@ -127,6 +117,51 @@ main {
 #right:hover {
   background-color: rgba(0, 128, 0, 0.2);
 }
+
+/* ========== dropdown menu css ========== */
+
+ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: rgb(235, 235, 235);
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px; 
+  background-color: rgb(248, 248, 248);
+}
+
+.dropdown-content a {
+  display: block;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ========== dropdown menu css ========== */
 
 .unselectable {
   -webkit-touch-callout: none;

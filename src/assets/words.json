@@ -1,8 +1,6 @@
 
 {
-"datasets": [{   
-    "level" : 1,
-
+"datasets": [{    
         "unit1": 
         {
             "name": "Greetings and Introduction", 
@@ -3062,8 +3060,6 @@
         }
     },
     {
-       "level" : 2,
-
         "unit1": 
         {
             "name": "Greetings and Introduction", 
