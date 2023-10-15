@@ -1,14 +1,15 @@
 <script setup>
 import { ref } from "vue"
-import words from './assets/words.json'
+import dataset from './assets/words.json'
 
 
 const questionText = ref("")
 const rightButtonText = ref("click to start")
 const word = ref("")
 const translation = ref("")
-const level1 = ref(words["datasets"][0])
-const level2 = ref(words["datasets"][1])
+const units = ref(dataset["datasets"])
+const currentLevel = ref(0)
+const currentUnit = ref(1)
 let wordId = 0
 
 function getRandomInt(max) {
@@ -20,14 +21,23 @@ function showTranslation() {
 }
 
 function nextWord(level, unit, random) {
-  random ? wordId = getRandomInt(words["datasets"][level]["unit" + unit]["vocabulary"].length) : 
+  random ? wordId = getRandomInt(dataset["datasets"][level]["unit" + unit]["vocabulary"].length) : 
 
   rightButtonText.value = "Got it!"
-  word.value = words["datasets"][level]["unit" + unit]["vocabulary"][wordId]["word"]
-  translation.value = words["datasets"][level]["unit" + unit]["vocabulary"][wordId]["translation"]
+  word.value = units.value[level]["unit" + unit]["vocabulary"][wordId]["word"]
+  translation.value = units.value[level]["unit" + unit]["vocabulary"][wordId]["translation"]
   questionText.value = word.value
 
-  !random && wordId === words["datasets"][level]["unit" + unit]["vocabulary"].length - 1 ? wordId = 0 : wordId++
+  !random && wordId === dataset["datasets"][level]["unit" + unit]["vocabulary"].length - 1 ? wordId = 0 : wordId++
+}
+
+function changeUnit(level, unit, text) {
+  let textLevel = level+1
+  questionText.value = "level " + textLevel + " : " + text
+  rightButtonText.value = "click to start"
+  currentLevel.value = level
+  currentUnit.value = unit
+  wordId = 0
 }
 </script>
 
@@ -38,20 +48,20 @@ function nextWord(level, unit, random) {
       <ul>
         <li class="dropdown"><a class="dropbtn">LEVEL 1</a>
           <div class="dropdown-content">
-            <a v-for="unit in level1">{{ unit.name }}</a>
+            <a v-for="unit in units[0]" :key="unit.id" @click="changeUnit(0, unit.id, unit.name)">{{ unit.id + " : " + unit.name }}</a>
           </div>
         </li>
         <li class="dropdown"><a class="dropbtn">LEVEL 2</a>
           <div class="dropdown-content">
-            <a v-for="unit in level2">{{ unit.name }}</a>
+            <a v-for="unit in units[1]" :key="unit.id" @click="changeUnit(1, unit.id, unit.name)">{{ unit.id + " : " + unit.name }}</a>
           </div>
         </li>
       </ul>
     </header>
     <main>
-      <div @click="showTranslation()" class="center unselectable" id="top">{{ questionText }}</div>
-      <div @click="test()" class="bottom center unselectable" id="left">Study again</div>
-      <div @click="nextWord(1, 2, false)" class="bottom center unselectable" id="right">{{ rightButtonText }}</div>
+      <div @click="showTranslation()" class="center unselectable" id="top"><p>{{ questionText }}</p></div>
+      <div class="bottom center unselectable" id="left">Study again</div>
+      <div @click="nextWord(currentLevel, currentUnit, false)" class="bottom center unselectable" id="right">{{ rightButtonText }}</div>
     </main>
   </div>
 </template>
@@ -59,8 +69,6 @@ function nextWord(level, unit, random) {
 
 
 <style scoped>
-
-
 .container {
   font-family: sans-serif;
   background-color: rgb(241, 241, 241);
