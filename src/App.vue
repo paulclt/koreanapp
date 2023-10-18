@@ -17,13 +17,21 @@ const currentUnit = ref(1)
 const score = ref(0)
 const nbQuestion = ref(10)
 const gameIsOn = ref(false)
+const nbTries = ref(0)
+
+const isOpen = ref(false)
+
 let wordId = 0
 let random = true
-let nbTries = 0
 let unitLength = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
+}
+
+function toggleMenu() {
+  isOpen.value = !isOpen.value
+  console.log("clicked")
 }
 
 function showTranslation() {
@@ -34,7 +42,7 @@ function showTranslation() {
 
 function resetScore(){
   random ? nbQuestion.value = 10 : nbQuestion.value = unitLength
-  nbTries = 0
+  nbTries.value = 0
   score.value = 0
 }
 
@@ -45,10 +53,10 @@ function setOrder() {
 }
 
 function checkScore(){
-  if(nbTries===nbQuestion.value){
+  if(nbTries.value===nbQuestion.value){
     alert("your score : " + score.value + " / " + nbQuestion.value)
     score.value = 0
-    nbTries = 0
+    nbTries.value = 0
   }
 }
 
@@ -74,7 +82,7 @@ function nextWord(level, unit) {
 function gotIt(level, unit){
   if(gameIsOn.value) {
     score.value++
-    nbTries++
+    nbTries.value++
     checkScore()
   }
   nextWord(level, unit)
@@ -82,13 +90,16 @@ function gotIt(level, unit){
 
 function studyAgain(level, unit) {
   if(gameIsOn.value) {
-    nbTries++
+    nbTries.value++
     checkScore()
     nextWord(level, unit)
   }
 }
 
 function changeUnit(level, unit, text) {
+
+  toggleMenu()
+
   let textLevel = level+1
   questionText.value = "level " + textLevel + " : " + text
   rightButtonText.value = "click to start"
@@ -110,26 +121,35 @@ function changeUnit(level, unit, text) {
 
 <template>
   <div class="container">
-    <header class="unselectable">
-      <ul>
-        <li class="dropdown"><a class="dropbtn">LEVEL 1</a>
-          <div class="dropdown-content">
-            <a v-for="unit in units[0]" :key="unit.id" @click="changeUnit(0, unit.id, unit.name)">{{ unit.id + " : " + unit.name }}</a>
-          </div>
-        </li>
-        <li class="dropdown"><a class="dropbtn">LEVEL 2</a>
-          <div class="dropdown-content">
-            <a v-for="unit in units[1]" :key="unit.id" @click="changeUnit(1, unit.id, unit.name)">{{ unit.id + " : " + unit.name }}</a>
-          </div>
-        </li>
-        <li class="dropdown"><a @click="setOrder()" class="dropbtn">{{ orderText }}</a></li>
-        <li class="score"><span>SCORE : {{ score + "/" + nbQuestion}}</span></li>
+
+    <nav>
+      <div class="menu unselectable">
+        <div class="menu-toggle" @click="toggleMenu()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="menuItem">
+          <span @click="setOrder()" class="dropbtn">{{ orderText }}</span>
+        </div>
+        <div class="menuItem">
+          <span>SCORE : {{ score + "/" + nbQuestion}}</span>
+        </div>
+        <div class="menuItem">
+          <span>COUNTER : {{ nbTries }}</span>
+        </div>
+      </div>
+      
+      <ul class="hiddenMenu unselectable" :class="{ 'open': isOpen }">
+        <li class="hiddenMenuItem" v-for="unit in units[0]" :key="unit.id" @click="changeUnit(0, unit.id, unit.name)">{{ "Level 1 -> " + unit.id + " : " + unit.name }}</li>
+        <li class="hiddenMenuItem" v-for="unit in units[1]" :key="unit.id" @click="changeUnit(1, unit.id, unit.name)">{{ "Level 2 -> " + unit.id + " : " + unit.name }}</li>
       </ul>
-    </header>
+    </nav>
+
     <main>
-      <div @click="showTranslation()" class="center unselectable structure" :class="{ top: questionButtonIsActive }"><p>{{ questionText }}</p></div>
-      <div @click="studyAgain(currentLevel, currentUnit)" class="bottom center unselectable" :class="{ left: leftButtonIsActive }">{{ leftButtonText }}</div>
-      <div @click="gotIt(currentLevel, currentUnit)" class="bottom center unselectable right">{{ rightButtonText }}</div>
+      <div @click="showTranslation()" class="middle center unselectable"><p>{{ questionText }}</p></div>
+      <div @click="studyAgain(currentLevel, currentUnit)" class="bottomLeft center unselectable" :class="{ left: leftButtonIsActive }">{{ leftButtonText }}</div>
+      <div @click="gotIt(currentLevel, currentUnit)" class="bottomRight center unselectable right">{{ rightButtonText }}</div>
     </main>
   </div>
 </template>
@@ -139,26 +159,66 @@ function changeUnit(level, unit, text) {
 <style scoped>
 .container {
   font-family: sans-serif;
-  background-color: rgb(241, 241, 241);
+  color: black;
 }
 
-header {
-  height: 6vh;
+/* ###--- menu css burger ---### */
+
+nav {
+    background-color: #ecf0f1;
+    padding: 10px 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.menu {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  align-items: center;
+}
+
+.menu-toggle {
+    display: block;
+    padding: 10px;
+}
+
+.menuItem {
+  padding: 10px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 5px 0;
+}
+
+.hiddenMenu {
+    display: none;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.hiddenMenuItem {
+  margin-bottom: 10px;
   border-bottom: 1px solid black;
 }
 
-ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
+
+.hiddenMenu li {
+    color: black;
+    text-decoration: none;
+    padding-left: 10px;
 }
 
+.hiddenMenu.open {
+    display: block;
+}
+
+/* ###--- menu css burger ---### */
+
 main {
-  height: 91vh;
+  height: 82vh;
   font-size: 1.5em;
   display: flex;
   flex-direction: row;
@@ -171,73 +231,23 @@ main {
   justify-content: center;
 }
 
-.structure {
+.middle {
   width: 100%;
-  height: 75%;
+  height: 70%;
+  background-color: white;
 }
 
-.bottom {
+.bottomLeft {
   width: 50%;
-  height: 25%;
+  height: 30%;
+  background-color: #3498db;
 }
 
-.top:hover {
-  cursor: help;
-  color: grey;
+.bottomRight {
+  width: 50%;
+  height: 30%;
+  background-color: rgb(39, 174, 96);
 }
-
-.left:hover {
-  background-color: rgba(255, 0, 0, 0.2);
-}
-
-.right:hover {
-  background-color: rgba(0, 128, 0, 0.2);
-}
-
-/* ========== dropdown menu css ========== */
-
-ul {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li {
-  float: left;
-}
-
-li a, .dropbtn {
-  display: inline-block;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-  background-color: rgb(235, 235, 235);
-}
-
-li.dropdown {
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  min-width: 160px; 
-  background-color: rgb(248, 248, 248);
-}
-
-.dropdown-content a {
-  display: block;
-  text-align: left;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* ========== dropdown menu css ========== */
 
 .unselectable {
   -webkit-touch-callout: none;
@@ -248,4 +258,24 @@ li.dropdown {
   user-select: none;
   cursor: default;
 }
+
+@media screen and (max-width: 1024px) { 
+  /* .bottomLeft {
+  background-color: rgba(255, 100, 100, 0.2);
+}
+
+.bottomRight {
+  background-color: rgba(0, 150, 0, 0.2);
+}
+
+.left:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.right:hover {
+  background-color: rgba(0, 128, 0, 0.2);
+} */
+  
+}
+
 </style>
