@@ -31,4 +31,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         local-dir: ./dist/  
-        server-dir: /public_html/korean
+        server-dir: /public_html/korean/
