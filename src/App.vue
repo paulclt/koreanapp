@@ -218,7 +218,7 @@ nav {
 /* ###--- menu css burger ---### */
 
 main {
-  height: 82vh;
+  height: 70vh;
   font-size: 1.5em;
   display: flex;
   flex-direction: row;
@@ -240,6 +240,10 @@ main {
 .bottomLeft {
   width: 50%;
   height: 30%;
+  background-color: white;
+}
+
+.left {
   background-color: #3498db;
 }
 
@@ -259,23 +263,10 @@ main {
   cursor: default;
 }
 
-@media screen and (max-width: 1024px) { 
-  /* .bottomLeft {
-  background-color: rgba(255, 100, 100, 0.2);
-}
-
-.bottomRight {
-  background-color: rgba(0, 150, 0, 0.2);
-}
-
-.left:hover {
-  background-color: rgba(255, 0, 0, 0.2);
-}
-
-.right:hover {
-  background-color: rgba(0, 128, 0, 0.2);
-} */
-  
+@media screen and (min-width: 1024px) {
+  main {
+    height: 90vh;
+  } 
 }
 
 </style>

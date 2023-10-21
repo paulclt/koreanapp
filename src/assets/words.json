@@ -4566,12 +4566,472 @@
                 "name": "Requests or Favors", 
                 "vocabulary": [
                     {
-                        "word" : "비누",
-                        "translation" : "soap"
+                        "word" : "부탁",
+                        "translation" : "request or explain"
                     },
                     {
-                        "word" : "마트",
-                        "translation" : "market"
+                        "word" : "설명하다",
+                        "translation" : "to explain"
+                    },
+                    {
+                        "word" : "빌려주다",
+                        "translation" : "to borrow"
+                    },
+                    {
+                        "word" : "들어주다",
+                        "translation" : "to do (a favor)"
+                    },
+                    {
+                        "word" : "결석하다",
+                        "translation" : "to be absent"
+                    },
+                    {
+                        "word" : "놓다",
+                        "translation" : "to place or put"
+                    },
+                    {
+                        "word" : "당기다",
+                        "translation" : "to pull"
+                    },
+                    {
+                        "word" : "벗다",
+                        "translation" : "to take off"
+                    },
+                    {
+                        "word" : "접다",
+                        "translation" : "to fold"
+                    },
+                    {
+                        "word" : "줄다",
+                        "translation" : "to decrease or be reduced"
+                    },
+                    {
+                        "word" : "펴다",
+                        "translation" : "to unfold or spread"
+                    },
+                    {
+                        "word" : "늘다",
+                        "translation" : "to increase or improve"
+                    },
+                    {
+                        "word" : "밀다",
+                        "translation" : "to push"
+                    },
+                    {
+                        "word" : "잡다",
+                        "translation" : "to grasp or catch"
+                    },
+                    {
+                        "word" : "저",
+                        "translation" : "excuse me"
+                    },
+                    {
+                        "word" : "이미",
+                        "translation" : "already"
+                    },
+                    {
+                        "word" : "퇴근하다",
+                        "translation" : "to leave one's office or get off from work"
+                    },
+                    {
+                        "word" : "서류",
+                        "translation" : "document"
+                    },
+                    {
+                        "word" : "전하다",
+                        "translation" : "to deliver or hand over"
+                    },
+                    {
+                        "word" : "부장",
+                        "translation" : "head of department or director"
+                    },
+                    {
+                        "word" : "아",
+                        "translation" : "ah"
+                    },
+                    {
+                        "word" : "음",
+                        "translation" : "um"
+                    },
+                    {
+                        "word" : "저기",
+                        "translation" : "excuse me"
+                    },
+                    {
+                        "word" : "어",
+                        "translation" : "uh"
+                    },
+                    {
+                        "word" : "자",
+                        "translation" : "okay"
+                    }
+                ]
+            },
+
+            "unit11": 
+            {
+                "id": 11,
+                "name": "Transportation", 
+                "vocabulary": [
+                    {
+                        "word" : "이태원역",
+                        "translation" : "Itaewon station"
+                    },
+                    {
+                        "word" : "을지로입구역",
+                        "translation" : "Euljiro station"
+                    },
+                    {
+                        "word" : "홍대",
+                        "translation" : "Hongdae"
+                    },
+                    {
+                        "word" : "쪽",
+                        "translation" : "direction"
+                    },
+                    {
+                        "word" : "반대",
+                        "translation" : "opposite"
+                    },
+                    {
+                        "word" : "노선도",
+                        "translation" : "route map"
+                    },
+                    {
+                        "word" : "교통카드",
+                        "translation" : "transportation card"
+                    },
+                    {
+                        "word" : "광화문",
+                        "translation" : "Gwanghwamun"
+                    },
+                    {
+                        "word" : "노약자석",
+                        "translation" : "seats for the ederly"
+                    },
+                    {
+                        "word" : "단말기",
+                        "translation" : "card reader"
+                    },
+                    {
+                        "word" : "벨",
+                        "translation" : "bell"
+                    },
+                    {
+                        "word" : "스크린도어",
+                        "translation" : "screen door"
+                    },
+                    {
+                        "word" : "손잡이",
+                        "translation" : "door knob"
+                    },
+                    {
+                        "word" : "승강장",
+                        "translation" : "platform"
+                    },
+                    {
+                        "word" : "안전선",
+                        "translation" : "safety line"
+                    },
+                    {
+                        "word" : "여의도역",
+                        "translation" : "Yeoido station"
+                    },
+                    {
+                        "word" : "요금",
+                        "translation" : "rate or fee"
+                    },
+                    {
+                        "word" : "종로",
+                        "translation" : "Jongno"
+                    },
+                    {
+                        "word" : "줄",
+                        "translation" : "line"
+                    },
+                    {
+                        "word" : "깨다",
+                        "translation" : "to wake up"
+                    },
+                    {
+                        "word" : "내다",
+                        "translation" : "to pay"
+                    },
+                    {
+                        "word" : "누르다",
+                        "translation" : "to press or push"
+                    },
+                    {
+                        "word" : "대다",
+                        "translation" : "to put or apply"
+                    },
+                    {
+                        "word" : "서다",
+                        "translation" : "to stand"
+                    },
+                    {
+                        "word" : "열리다",
+                        "translation" : "to be opened"
+                    },
+                    {
+                        "word" : "기사",
+                        "translation" : "driver"
+                    },
+                    {
+                        "word" : "경복궁",
+                        "translation" : "Gyeongbokgung palace"
+                    },
+                    {
+                        "word" : "출되근",
+                        "translation" : "enter and leave one's office"
+                    },
+                    {
+                        "word" : "밀리다",
+                        "translation" : "to be backed up"
+                    },
+                    {
+                        "word" : "삼거리",
+                        "translation" : "three-way intersection"
+                    },
+                    {
+                        "word" : "좌회전하다",
+                        "translation" : "to make a left turn"
+                    },
+                    {
+                        "word" : "세우다",
+                        "translation" : "to stop"
+                    },
+                    {
+                        "word" : "광장 시장",
+                        "translation" : "Gwangjang market"
+                    },
+                    {
+                        "word" : "우회전",
+                        "translation" : "right turn"
+                    },
+                    {
+                        "word" : "유턴",
+                        "translation" : "u-turn"
+                    },
+                    {
+                        "word" : "좌회전",
+                        "translation" : "left turn"
+                    },
+                    {
+                        "word" : "주차 금지",
+                        "translation" : "no parking"
+                    },
+                    {
+                        "word" : "주차장",
+                        "translation" : "parking lot"
+                    },
+                    {
+                        "word" : "직진",
+                        "translation" : "straight ahead"
+                    },
+                    {
+                        "word" : "막히다",
+                        "translation" : "to be stuck"
+                    },
+                    {
+                        "word" : "주차하다",
+                        "translation" : "to park"
+                    }
+                ]
+            },
+
+            "unit12": 
+            {
+                "id": 12,
+                "name": "School life", 
+                "vocabulary": [
+                    {
+                        "word" : "자꾸",
+                        "translation" : "frequently"
+                    },
+                    {
+                        "word" : "연습하다",
+                        "translation" : "to practice"
+                    },
+                    {
+                        "word" : "사용하다",
+                        "translation" : "to use"
+                    },
+                    {
+                        "word" : "잊어버리다",
+                        "translation" : "to forget"
+                    },
+                    {
+                        "word" : "외우다",
+                        "translation" : "to memorize"
+                    },
+                    {
+                        "word" : "기억하다",
+                        "translation" : "to remember"
+                    },
+                    {
+                        "word" : "메모",
+                        "translation" : "memo"
+                    },
+                    {
+                        "word" : "끝내다",
+                        "translation" : "to end or finish"
+                    },
+                    {
+                        "word" : "버튼",
+                        "translation" : "button"
+                    },
+                    {
+                        "word" : "대답하다",
+                        "translation" : "to reply or answer"
+                    },
+                    {
+                        "word" : "마치다",
+                        "translation" : "to end or finish"
+                    },
+                    {
+                        "word" : "발표하다",
+                        "translation" : "to announce or make a presentation"
+                    },
+                    {
+                        "word" : "지각하다",
+                        "translation" : "to be late"
+                    },
+                    {
+                        "word" : "질문하다",
+                        "translation" : "to ask a question"
+                    },
+                    {
+                        "word" : "출석하다",
+                        "translation" : "to attend or be present"
+                    },
+                    {
+                        "word" : "신청하다",
+                        "translation" : "to apply"
+                    },
+                    {
+                        "word" : "직접",
+                        "translation" : "in person or directly"
+                    },
+                    {
+                        "word" : "신청서",
+                        "translation" : "application or registration form"
+                    },
+                    {
+                        "word" : "내다",
+                        "translation" : "to turn in"
+                    },
+                    {
+                        "word" : "홈페이지",
+                        "translation" : "homepage"
+                    },
+                    {
+                        "word" : "결과",
+                        "translation" : "result"
+                    },
+                    {
+                        "word" : "기간",
+                        "translation" : "time period"
+                    },
+                    {
+                        "word" : "등록금",
+                        "translation" : "registration fee"
+                    },
+                    {
+                        "word" : "교환",
+                        "translation" : "exchange"
+                    },
+                    {
+                        "word" : "등록",
+                        "translation" : "registration"
+                    },
+                    {
+                        "word" : "시간표",
+                        "translation" : "time schedule"
+                    },
+                    {
+                        "word" : "취소",
+                        "translation" : "cancellation"
+                    },
+                    {
+                        "word" : "휴학",
+                        "translation" : "temporary absence from school"
+                    }
+                ]
+            },
+
+            "unit13": 
+            {
+                "id": 13,
+                "name": "Public Institutions", 
+                "vocabulary": [
+                    {
+                        "word" : "체크카드",
+                        "translation" : "debit card"
+                    },
+                    {
+                        "word" : "우선",
+                        "translation" : "first"
+                    },
+                    {
+                        "word" : "서명하다",
+                        "translation" : "to sign one's name"
+                    },
+                    {
+                        "word" : "잠시",
+                        "translation" : "a little while or moment"
+                    },
+                    {
+                        "word" : "통장",
+                        "translation" : "bank book"
+                    },
+                    {
+                        "word" : "비밀번호",
+                        "translation" : "password"
+                    },
+                    {
+                        "word" : "계좌 번호",
+                        "translation" : "account number"
+                    },
+                    {
+                        "word" : "공과금",
+                        "translation" : "utility bill"
+                    },
+                    {
+                        "word" : "도장",
+                        "translation" : "seal or stamp"
+                    },
+                    {
+                        "word" : "번호표",
+                        "translation" : "number ticket"
+                    },
+                    {
+                        "word" : "부부",
+                        "translation" : "husband and wife"
+                    },
+                    {
+                        "word" : "순서",
+                        "translation" : "order or sequence"
+                    },
+                    {
+                        "word" : "저금",
+                        "translation" : "savings or deposit"
+                    },
+                    {
+                        "word" : "현금 자동 인출기",
+                        "translation" : "ATM"
+                    },
+                    {
+                        "word" : "환전",
+                        "translation" : "exchange of money"
+                    },
+                    {
+                        "word" : "씻다",
+                        "translation" : "to wash or clean"
+                    },
+                    {
+                        "word" : "(돈을) 찾다",
+                        "translation" : "to withdraw (money)"
                     }
                 ]
             }
