@@ -16,9 +16,7 @@ const orderText = ref("RANDOM")
 const word = ref("")
 const translation = ref("")
 
-// which button is active
-const leftButtonIsActive = ref(false)
-const questionButtonIsActive = ref(false)
+// display header hidden menu
 const menuIsActive = ref(false)
 
 // which set is studied 
@@ -74,8 +72,6 @@ function nextWord() {
   rightButtonText.value = "Got it!"
   leftButtonText.value = "Study again"
 
-  leftButtonIsActive.value = true
-  questionButtonIsActive.value = true
   gameIsOn.value = true
 
   word.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["word"]
@@ -110,8 +106,6 @@ function changeUnit(level, unit, text) {
   rightButtonText.value = "click to start"
   leftButtonText.value = ""
 
-  leftButtonIsActive.value = false
-  questionButtonIsActive.value = false
   gameIsOn.value = false
 
   currentLevel.value = level
@@ -132,7 +126,7 @@ function changeUnit(level, unit, text) {
           <div class="bar"></div>
           <div class="bar"></div>
         </div>
-        <div class="menuItem">
+        <div class="menuItem desktopColor">
           <span @click="setOrder()" class="dropbtn">{{ orderText }}</span>
         </div>
         <div class="menuItem">
@@ -150,8 +144,8 @@ function changeUnit(level, unit, text) {
     </nav>
 
     <main>
-      <div @click="showTranslation()" class="middle center unselectable"><p>{{ questionText }}</p></div>
-      <div @click="studyAgain()" class="bottomLeft center unselectable" :class="{ left: leftButtonIsActive }">{{ leftButtonText }}</div>
+      <div @click="showTranslation()" class="middle center unselectable" :class="{ middleGame: gameIsOn }"><p>{{ questionText }}</p></div>
+      <div @click="studyAgain()" class="bottomLeft center unselectable" :class="{ left: gameIsOn }">{{ leftButtonText }}</div>
       <div @click="gotIt()" class="bottomRight center unselectable right">{{ rightButtonText }}</div>
     </main>
   </div>
@@ -193,7 +187,7 @@ nav {
 }
 
 .menuItem {
-  padding: 10px;
+  padding: 16px;
 }
 
 .bar {
@@ -211,7 +205,7 @@ nav {
 }
 
 .hiddenMenuItem {
-  margin-bottom: 10px;
+  margin-top: 10px;
   border-bottom: 1px solid black;
 }
 
@@ -270,6 +264,27 @@ main {
 @media screen and (min-width: 1024px) {
   main {
     height: 90vh;
-  } 
+  }
+
+  .middleGame:hover{
+    color: #2980b9;
+  }
+
+  .menu-toggle:hover{
+    background-color: #2980b9;
+  }
+
+  .desktopColor:hover{
+    background-color: #2980b9;
+  }
+
+  .hiddenMenuItem:hover{
+    color: #2980b9;
+  }
+
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 </style>
