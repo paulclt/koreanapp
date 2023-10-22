@@ -2,35 +2,43 @@
 import { ref } from "vue"
 import dataset from './assets/words.json'
 
+//CONST
+let NBRQUESTION = 10
 
+//JSON
+const units = ref(dataset["datasets"])
+
+// text variable
 const questionText = ref("level 1 : Greetings and Introduction")
 const rightButtonText = ref("click to start")
 const leftButtonText = ref("")
 const orderText = ref("RANDOM")
-const leftButtonIsActive = ref(false)
-const questionButtonIsActive = ref(false)
 const word = ref("")
 const translation = ref("")
-const units = ref(dataset["datasets"])
+
+// which button is active
+const leftButtonIsActive = ref(false)
+const questionButtonIsActive = ref(false)
+const menuIsActive = ref(false)
+
+// which set is studied 
 const currentLevel = ref(0)
 const currentUnit = ref(1)
-const score = ref(0)
-const nbQuestion = ref(10)
+
+//game logic
 const gameIsOn = ref(false)
+const score = ref(0)
+const nbQuestion = ref(NBRQUESTION)
 const nbTries = ref(0)
-
-const isOpen = ref(false)
-
 let wordId = 0
 let random = true
-let unitLength = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
 function toggleMenu() {
-  isOpen.value = !isOpen.value
+  menuIsActive.value = !menuIsActive.value
   console.log("clicked")
 }
 
@@ -41,7 +49,7 @@ function showTranslation() {
 }
 
 function resetScore(){
-  random ? nbQuestion.value = 10 : nbQuestion.value = unitLength
+  random ? nbQuestion.value = NBRQUESTION : nbQuestion.value = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
   nbTries.value = 0
   score.value = 0
 }
@@ -60,9 +68,8 @@ function checkScore(){
   }
 }
 
-function nextWord(level, unit) {
-  
-  random ? wordId = getRandomInt(dataset["datasets"][level]["unit" + unit]["vocabulary"].length) : null
+function nextWord() {
+  random ? wordId = getRandomInt(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length) : null
 
   rightButtonText.value = "Got it!"
   leftButtonText.value = "Study again"
@@ -71,33 +78,31 @@ function nextWord(level, unit) {
   questionButtonIsActive.value = true
   gameIsOn.value = true
 
-
-  word.value = units.value[level]["unit" + unit]["vocabulary"][wordId]["word"]
-  translation.value = units.value[level]["unit" + unit]["vocabulary"][wordId]["translation"]
+  word.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["word"]
+  translation.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["translation"]
   questionText.value = word.value
 
-  !random && wordId === dataset["datasets"][level]["unit" + unit]["vocabulary"].length - 1 ? wordId = 0 : wordId++
+  !random && wordId === dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length - 1 ? wordId = 0 : wordId++
 }
 
-function gotIt(level, unit){
+function gotIt(){
   if(gameIsOn.value) {
     score.value++
     nbTries.value++
     checkScore()
   }
-  nextWord(level, unit)
+  nextWord()
 }
 
-function studyAgain(level, unit) {
+function studyAgain() {
   if(gameIsOn.value) {
     nbTries.value++
     checkScore()
-    nextWord(level, unit)
+    nextWord()
   }
 }
 
 function changeUnit(level, unit, text) {
-
   toggleMenu()
 
   let textLevel = level+1
@@ -112,7 +117,6 @@ function changeUnit(level, unit, text) {
   currentLevel.value = level
   currentUnit.value = unit
 
-  unitLength = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
   wordId = 0
   resetScore()
 }
@@ -121,7 +125,6 @@ function changeUnit(level, unit, text) {
 
 <template>
   <div class="container">
-
     <nav>
       <div class="menu unselectable">
         <div class="menu-toggle" @click="toggleMenu()">
@@ -140,7 +143,7 @@ function changeUnit(level, unit, text) {
         </div>
       </div>
       
-      <ul class="hiddenMenu unselectable" :class="{ 'open': isOpen }">
+      <ul class="hiddenMenu unselectable" :class="{'open': menuIsActive}">
         <li class="hiddenMenuItem" v-for="unit in units[0]" :key="unit.id" @click="changeUnit(0, unit.id, unit.name)">{{ "Level 1 -> " + unit.id + " : " + unit.name }}</li>
         <li class="hiddenMenuItem" v-for="unit in units[1]" :key="unit.id" @click="changeUnit(1, unit.id, unit.name)">{{ "Level 2 -> " + unit.id + " : " + unit.name }}</li>
       </ul>
@@ -148,21 +151,29 @@ function changeUnit(level, unit, text) {
 
     <main>
       <div @click="showTranslation()" class="middle center unselectable"><p>{{ questionText }}</p></div>
-      <div @click="studyAgain(currentLevel, currentUnit)" class="bottomLeft center unselectable" :class="{ left: leftButtonIsActive }">{{ leftButtonText }}</div>
-      <div @click="gotIt(currentLevel, currentUnit)" class="bottomRight center unselectable right">{{ rightButtonText }}</div>
+      <div @click="studyAgain()" class="bottomLeft center unselectable" :class="{ left: leftButtonIsActive }">{{ leftButtonText }}</div>
+      <div @click="gotIt()" class="bottomRight center unselectable right">{{ rightButtonText }}</div>
     </main>
   </div>
 </template>
  
-
-
 <style scoped>
 .container {
   font-family: sans-serif;
   color: black;
 }
 
-/* ###--- menu css burger ---### */
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+/* ###--- header START ---### */
 
 nav {
     background-color: #ecf0f1;
@@ -215,7 +226,8 @@ nav {
     display: block;
 }
 
-/* ###--- menu css burger ---### */
+/* ###--- header END ---### */
+/* ###--- main START ---### */
 
 main {
   height: 70vh;
@@ -253,20 +265,11 @@ main {
   background-color: rgb(39, 174, 96);
 }
 
-.unselectable {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: default;
-}
+/* ###--- main END ---### */
 
 @media screen and (min-width: 1024px) {
   main {
     height: 90vh;
   } 
 }
-
 </style>
