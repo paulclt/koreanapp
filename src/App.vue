@@ -31,13 +31,16 @@ const nbTries = ref(0)
 let wordId = 0
 let random = true
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+function getRandomInt(max, oldValue) {
+    let newValue = oldValue
+    while(newValue===oldValue) {
+      newValue = Math.floor(Math.random() * max)
+    }
+    return newValue
 }
 
 function toggleMenu() {
   menuIsActive.value = !menuIsActive.value
-  console.log("clicked")
 }
 
 function showTranslation() {
@@ -50,12 +53,14 @@ function resetScore(){
   random ? nbQuestion.value = NBRQUESTION : nbQuestion.value = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
   nbTries.value = 0
   score.value = 0
+  wordId = 0
 }
 
 function setOrder() {
   orderText.value === "RANDOM" ? orderText.value = "NOT RANDOM" : orderText.value = "RANDOM"
   random = !random
   resetScore()
+  gameIsOn.value ? nextWord() : null
 }
 
 function checkScore(){
@@ -67,7 +72,7 @@ function checkScore(){
 }
 
 function nextWord() {
-  random ? wordId = getRandomInt(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length) : null
+  random ? wordId = getRandomInt(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length, wordId) : null
 
   rightButtonText.value = "Got it!"
   leftButtonText.value = "Study again"
@@ -110,8 +115,6 @@ function changeUnit(level, unit, text) {
 
   currentLevel.value = level
   currentUnit.value = unit
-
-  wordId = 0
   resetScore()
 }
 </script>
