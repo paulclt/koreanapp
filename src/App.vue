@@ -126,8 +126,8 @@ function changeUnit(level, unit, text) {
           <div class="bar"></div>
           <div class="bar"></div>
         </div>
-        <div class="menuItem desktopColor">
-          <span @click="setOrder()" class="dropbtn">{{ orderText }}</span>
+        <div class="menuItem desktopColor" @click="setOrder()">
+          <span class="dropbtn">{{ orderText }}</span>
         </div>
         <div class="menuItem">
           <span>SCORE : {{ score + "/" + nbQuestion}}</span>
