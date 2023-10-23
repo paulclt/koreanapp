@@ -5032,6 +5032,82 @@
                     {
                         "word" : "(돈을) 찾다",
                         "translation" : "to withdraw (money)"
+                    },
+                    {
+                        "word" : "소포",
+                        "translation" : "package or parcel"
+                    },
+                    {
+                        "word" : "상자",
+                        "translation" : "box"
+                    },
+                    {
+                        "word" : "포장하다",
+                        "translation" : "to wrap"
+                    },
+                    {
+                        "word" : "저울",
+                        "translation" : "scale"
+                    },
+                    {
+                        "word" : "올려놓다",
+                        "translation" : "to place on top of something"
+                    },
+                    {
+                        "word" : "항공편",
+                        "translation" : "by airmail"
+                    },
+                    {
+                        "word" : "부치다",
+                        "translation" : "to send or ship"
+                    },
+                    {
+                        "word" : "배편",
+                        "translation" : "by ship"
+                    },
+                    {
+                        "word" : "국제 특급",
+                        "translation" : "express mail service "
+                    },
+                    {
+                        "word" : "길이",
+                        "translation" : "lenght"
+                    },
+                    {
+                        "word" : "높이",
+                        "translation" : "height"
+                    },
+                    {
+                        "word" : "무게",
+                        "translation" : "weight"
+                    },
+                    {
+                        "word" : "봉투",
+                        "translation" : "envelope"
+                    },
+                    {
+                        "word" : "우편번호",
+                        "translation" : "zip code"
+                    },
+                    {
+                        "word" : "우표",
+                        "translation" : "stamp"
+                    },
+                    {
+                        "word" : "크기",
+                        "translation" : "size"
+                    },
+                    {
+                        "word" : "택배",
+                        "translation" : "package"
+                    },
+                    {
+                        "word" : "낮다",
+                        "translation" : "to be low or short"
+                    },
+                    {
+                        "word" : "높다",
+                        "translation" : "to be high or tall"
                     }
                 ]
             }
