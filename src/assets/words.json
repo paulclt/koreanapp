@@ -5110,6 +5110,59 @@
                         "translation" : "to be high or tall"
                     }
                 ]
-            }
-            }]
+            },
+
+            "unit14": 
+            {
+                "id": 14,
+                "name": "Telephone", 
+                "vocabulary": [
+                    {
+                        "word" : "이전",
+                        "translation" : "before"
+                    },
+                    {
+                        "word" : "고장 나다",
+                        "translation" : "to break down or be broken"
+                    },
+                    {
+                        "word" : "서비스 센터",
+                        "translation" : "service center"
+                    },
+                    {
+                        "word" : "고치다",
+                        "translation" : "to repair or fix"
+                    },
+                    {
+                        "word" : "검색하다",
+                        "translation" : "to search"
+                    },
+                    {
+                        "word" : "속도",
+                        "translation" : "speed"
+                    },
+                    {
+                        "word" : "동영상",
+                        "translation" : "video file"
+                    },
+                    {
+                        "word" : "위치",
+                        "translation" : "position"
+                    },
+                    {
+                        "word" : "계산하다",
+                        "translation" : "to calculate"
+                    },
+                    {
+                        "word" : "녹음하다",
+                        "translation" : "to record"
+                    },
+                    {
+                        "word" : "통화하다",
+                        "translation" : "to speak over the phone"
+                    }
+                ]
+            }  
+                    
+        }]
     }
