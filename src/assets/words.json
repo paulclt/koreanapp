@@ -5160,6 +5160,62 @@
                     {
                         "word" : "통화하다",
                         "translation" : "to speak over the phone"
+                    },
+                    {
+                        "word" : "방금",
+                        "translation" : "just now"
+                    },
+                    {
+                        "word" : "캠핑장",
+                        "translation" : "camping site"
+                    },
+                    {
+                        "word" : "데려오다",
+                        "translation" : "to bring someone"
+                    },
+                    {
+                        "word" : "함께",
+                        "translation" : "with"
+                    },
+                    {
+                        "word" : "바비큐",
+                        "translation" : "barbecue"
+                    },
+                    {
+                        "word" : "농구공",
+                        "translation" : "basketball"
+                    },
+                    {
+                        "word" : "남기다",
+                        "translation" : "to leave"
+                    },
+                    {
+                        "word" : "지우다",
+                        "translation" : "to erase"
+                    },
+                    {
+                        "word" : "가까이",
+                        "translation" : "near or nearby"
+                    },
+                    {
+                        "word" : "멀리",
+                        "translation" : "far away"
+                    },
+                    {
+                        "word" : "답장",
+                        "translation" : "answer or reply"
+                    },
+                    {
+                        "word" : "싸우다",
+                        "translation" : "to fight"
+                    },
+                    {
+                        "word" : "확인하다",
+                        "translation" : "to confirm"
+                    },
+                    {
+                        "word" : "따로",
+                        "translation" : "seperately"
                     }
                 ]
             }  
