@@ -2,8 +2,8 @@
 import { ref } from "vue"
 import dataset from './assets/words.json'
 
-//CONST
-let NBRQUESTION = 10
+// CONST
+const MAXQUESTION = 10
 
 //JSON
 const units = ref(dataset["datasets"])
@@ -12,7 +12,7 @@ const units = ref(dataset["datasets"])
 const questionText = ref("level 1 : Greetings and Introduction")
 const rightButtonText = ref("click to start")
 const leftButtonText = ref("")
-const orderText = ref("RANDOM")
+const orderText = ref("NOT RANDOM")
 const word = ref("")
 const translation = ref("")
 
@@ -24,19 +24,21 @@ const currentLevel = ref(0)
 const currentUnit = ref(1)
 
 //game logic
+let nbRQuestion = MAXQUESTION
 const gameIsOn = ref(false)
 const score = ref(0)
-const nbQuestion = ref(NBRQUESTION)
+const nbQuestion = ref(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length)
 const nbTries = ref(0)
 let wordId = 0
-let random = true
+let random = false
+let wordIdRList = []
 
-function getRandomInt(max, oldValue) {
-    let newValue = oldValue
-    while(newValue===oldValue) {
-      newValue = Math.floor(Math.random() * max)
+function getRandom(max) {
+    let value = Math.floor(Math.random() * max)
+    while(wordIdRList.includes(value)) {
+      value = Math.floor(Math.random() * max)
     }
-    return newValue
+    return value
 }
 
 function toggleMenu() {
@@ -50,10 +52,23 @@ function showTranslation() {
 }
 
 function resetScore(){
-  random ? nbQuestion.value = NBRQUESTION : nbQuestion.value = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
+  if(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length < MAXQUESTION) {
+    nbRQuestion = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
+  } else {
+    nbRQuestion = MAXQUESTION
+  }
+  random ? nbQuestion.value = nbRQuestion : nbQuestion.value = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
   nbTries.value = 0
   score.value = 0
   wordId = 0
+  wordIdRList.length = 0
+  random ? prepareRQuestion() : null
+}
+
+function prepareRQuestion () {
+  for(let i=0; i<nbRQuestion; i++) {
+    wordIdRList.push(getRandom(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length))
+  }
 }
 
 function setOrder() {
@@ -66,24 +81,26 @@ function setOrder() {
 function checkScore(){
   if(nbTries.value===nbQuestion.value){
     alert("your score : " + score.value + " / " + nbQuestion.value)
-    score.value = 0
-    nbTries.value = 0
+    resetScore()
   }
 }
 
 function nextWord() {
-  random ? wordId = getRandomInt(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length, wordId) : null
-
   rightButtonText.value = "Got it!"
   leftButtonText.value = "Study again"
 
   gameIsOn.value = true
 
-  word.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["word"]
-  translation.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["translation"]
+  if(random) {
+    word.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordIdRList[wordId]]["word"]
+    translation.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordIdRList[wordId]]["translation"]
+  } else {
+    word.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["word"]
+    translation.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["translation"]
+  }
+  
   questionText.value = word.value
-
-  !random && wordId === dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length - 1 ? wordId = 0 : wordId++
+  wordId++
 }
 
 function gotIt(){
