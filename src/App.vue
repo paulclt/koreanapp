@@ -150,10 +150,10 @@ function changeUnit(level, unit, text) {
           <span class="dropbtn">{{ orderText }}</span>
         </div>
         <div class="menuItem">
-          <span>SCORE : {{ score + "/" + nbQuestion}}</span>
+          <span>SCORE : {{ score }}</span>
         </div>
         <div class="menuItem">
-          <span>COUNTER : {{ nbTries }}</span>
+          <span>QUESTION : {{ nbTries + "/" + nbQuestion }}</span>
         </div>
       </div>
       
