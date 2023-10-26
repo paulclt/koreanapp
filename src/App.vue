@@ -26,6 +26,7 @@ const currentUnit = ref(1)
 //game logic
 let nbRQuestion = MAXQUESTION
 const gameIsOn = ref(false)
+const hideTranslation = ref(true)
 const score = ref(0)
 const nbQuestion = ref(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length)
 const nbTries = ref(0)
@@ -45,10 +46,8 @@ function toggleMenu() {
   menuIsActive.value = !menuIsActive.value
 }
 
-function showTranslation() {
-  if(gameIsOn.value) {
-    questionText.value === word.value ? questionText.value = translation.value : questionText.value = word.value
-  }
+function toggleTranslation() {
+  gameIsOn.value ? hideTranslation.value = !hideTranslation.value : null
 }
 
 function resetScore(){
@@ -75,6 +74,7 @@ function setOrder() {
   orderText.value === "RANDOM" ? orderText.value = "NOT RANDOM" : orderText.value = "RANDOM"
   random = !random
   resetScore()
+  !hideTranslation.value ? toggleTranslation() : null
   gameIsOn.value ? nextWord() : null
 }
 
@@ -110,6 +110,7 @@ function gotIt(){
     checkScore()
   }
   nextWord()
+  !hideTranslation.value ? toggleTranslation() : null
 }
 
 function studyAgain() {
@@ -117,6 +118,7 @@ function studyAgain() {
     nbTries.value++
     checkScore()
     nextWord()
+    !hideTranslation.value ? toggleTranslation() : null
   }
 }
 
@@ -127,6 +129,7 @@ function changeUnit(level, unit, text) {
   questionText.value = "level " + textLevel + " : " + text
   rightButtonText.value = "click to start"
   leftButtonText.value = ""
+  translation.value = ""
 
   gameIsOn.value = false
 
@@ -164,7 +167,8 @@ function changeUnit(level, unit, text) {
     </nav>
 
     <main>
-      <div @click="showTranslation()" class="middle center unselectable" :class="{ middleGame: gameIsOn }"><p>{{ questionText }}</p></div>
+      <div @click="toggleTranslation()" class="middle separation center unselectable" :class="{ middleGame: gameIsOn }"><p>{{ questionText }}</p></div>
+      <div @click="toggleTranslation()" class="middle center unselectable" :class="{ translation: hideTranslation}"><p>{{ translation }}</p></div>
       <div @click="studyAgain()" class="bottomLeft center unselectable" :class="{ left: gameIsOn }">{{ leftButtonText }}</div>
       <div @click="gotIt()" class="bottomRight center unselectable right">{{ rightButtonText }}</div>
     </main>
@@ -259,8 +263,16 @@ main {
 
 .middle {
   width: 100%;
-  height: 70%;
+  height: 35%;
   background-color: white;
+}
+
+.separation {
+  border-bottom: #ecf0f1 solid 4px;
+}
+
+.translation {
+  color: white;
 }
 
 .bottomLeft {
