@@ -5218,7 +5218,90 @@
                         "translation" : "seperately"
                     }
                 ]
-            }  
-                    
+            }, 
+
+            "unit15": 
+            {
+                "id": 15,
+                "name": "Reservations and Ordering", 
+                "vocabulary": [
+                    {
+                        "word" : "팀장",
+                        "translation" : "manager"
+                    },
+                    {
+                        "word" : "중요하다",
+                        "translation" : "to be important"
+                    },
+                    {
+                        "word" : "서비스",
+                        "translation" : "service"
+                    } ,
+                    {
+                        "word" : "메뉴",
+                        "translation" : "menu"
+                    } ,
+                    {
+                        "word" : "선택",
+                        "translation" : "selection or choice"
+                    } ,
+                    {
+                        "word" : "남다",
+                        "translation" : "to remain"
+                    } ,
+                    {
+                        "word" : "공휴일",
+                        "translation" : "legal holiday"
+                    } ,
+                    {
+                        "word" : "마지막",
+                        "translation" : "last"
+                    } ,
+                    {
+                        "word" : "연락처",
+                        "translation" : "contact information"
+                    } ,
+                    {
+                        "word" : "연말",
+                        "translation" : "end of the year"
+                    } ,
+                    {
+                        "word" : "연휴",
+                        "translation" : "consecutive holidays"
+                    } ,
+                    {
+                        "word" : "예약석",
+                        "translation" : "reserved seats"
+                    } ,
+                    {
+                        "word" : "평일",
+                        "translation" : "weekday"
+                    } ,
+                    {
+                        "word" : "꺼내다",
+                        "translation" : "to take out or bring up"
+                    } ,
+                    {
+                        "word" : "비다",
+                        "translation" : "to be empty"
+                    } ,
+                    {
+                        "word" : "날짜",
+                        "translation" : "date"
+                    } ,
+                    {
+                        "word" : "말",
+                        "translation" : "the end"
+                    } ,
+                    {
+                        "word" : "연초",
+                        "translation" : "beginning of the year"
+                    } ,
+                    {
+                        "word" : "초",
+                        "translation" : "the beginning"
+                    }   
+                ]
+            }    
         }]
     }
