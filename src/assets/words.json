@@ -5296,10 +5296,74 @@
                     {
                         "word" : "연초",
                         "translation" : "beginning of the year"
-                    } ,
+                    },
                     {
                         "word" : "초",
                         "translation" : "the beginning"
+                    },
+                    {
+                        "word" : "신용카드",
+                        "translation" : "credit card"
+                    },
+                    {
+                        "word" : "현금",
+                        "translation" : "cash"
+                    },
+                    {
+                        "word" : "결제하다",
+                        "translation" : "to make a payment"
+                    },
+                    {
+                        "word" : "지난번",
+                        "translation" : "last time"
+                    },
+                    {
+                        "word" : "이상",
+                        "translation" : "something wrong"
+                    },
+                    {
+                        "word" : "금방",
+                        "translation" : "right away"
+                    },
+                    {
+                        "word" : "과거",
+                        "translation" : "past"
+                    },
+                    {
+                        "word" : "외출",
+                        "translation" : "going out"
+                    },
+                    {
+                        "word" : "미래",
+                        "translation" : "future"
+                    },
+                    {
+                        "word" : "현재",
+                        "translation" : "present"
+                    },
+                    {
+                        "word" : "배달되다",
+                        "translation" : "to be delivered"
+                    },
+                    {
+                        "word" : "배달시키다",
+                        "translation" : "to order for delivery"
+                    },
+                    {
+                        "word" : "잊다",
+                        "translation" : "to forget"
+                    },
+                    {
+                        "word" : "늘",
+                        "translation" : "always"
+                    },
+                    {
+                        "word" : "아까",
+                        "translation" : "a short while ago"
+                    },
+                    {
+                        "word" : "앞으로",
+                        "translation" : "in the future"
                     }   
                 ]
             }    
