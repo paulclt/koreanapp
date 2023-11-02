@@ -5240,59 +5240,59 @@
                     {
                         "word" : "메뉴",
                         "translation" : "menu"
-                    } ,
+                    },
                     {
                         "word" : "선택",
                         "translation" : "selection or choice"
-                    } ,
+                    },
                     {
                         "word" : "남다",
                         "translation" : "to remain"
-                    } ,
+                    },
                     {
                         "word" : "공휴일",
                         "translation" : "legal holiday"
-                    } ,
+                    },
                     {
                         "word" : "마지막",
                         "translation" : "last"
-                    } ,
+                    },
                     {
                         "word" : "연락처",
                         "translation" : "contact information"
-                    } ,
+                    },
                     {
                         "word" : "연말",
                         "translation" : "end of the year"
-                    } ,
+                    },
                     {
                         "word" : "연휴",
                         "translation" : "consecutive holidays"
-                    } ,
+                    },
                     {
                         "word" : "예약석",
                         "translation" : "reserved seats"
-                    } ,
+                    },
                     {
                         "word" : "평일",
                         "translation" : "weekday"
-                    } ,
+                    },
                     {
                         "word" : "꺼내다",
                         "translation" : "to take out or bring up"
-                    } ,
+                    },
                     {
                         "word" : "비다",
                         "translation" : "to be empty"
-                    } ,
+                    },
                     {
                         "word" : "날짜",
                         "translation" : "date"
-                    } ,
+                    },
                     {
                         "word" : "말",
                         "translation" : "the end"
-                    } ,
+                    },
                     {
                         "word" : "연초",
                         "translation" : "beginning of the year"
@@ -5366,6 +5366,326 @@
                         "translation" : "in the future"
                     }   
                 ]
-            }    
+            },
+
+            "unit16": 
+            {
+                "id": 16,
+                "name": "Health", 
+                "vocabulary": [
+                    {
+                        "word" : "열",
+                        "translation" : "fever"
+                    },
+                    {
+                        "word" : "나다",
+                        "translation" : "to have"
+                    },
+                    {
+                        "word" : "두통",
+                        "translation" : "headache"
+                    },
+                    {
+                        "word" : "심하다",
+                        "translation" : "to be severe"
+                    },
+                    {
+                        "word" : "붓다",
+                        "translation" : "to swell up / to pour"
+                    },
+                    {
+                        "word" : "기침",
+                        "translation" : "cough"
+                    },
+                    {
+                        "word" : "콧물",
+                        "translation" : "nose running or drippings"
+                    },
+                    {
+                        "word" : "감기",
+                        "translation" : "cold"
+                    },
+                    {
+                        "word" : "푹",
+                        "translation" : "completely or entirely"
+                    },
+                    {
+                        "word" : "냄새",
+                        "translation" : "smell"
+                    },
+                    {
+                        "word" : "배탈",
+                        "translation" : "stomach disorder"
+                    },
+                    {
+                        "word" : "사고",
+                        "translation" : "accident"
+                    },
+                    {
+                        "word" : "소화",
+                        "translation" : "digestion"
+                    },
+                    {
+                        "word" : "땀",
+                        "translation" : "sweat"
+                    },
+                    {
+                        "word" : "변비",
+                        "translation" : "constipation"
+                    },
+                    {
+                        "word" : "상처",
+                        "translation" : "injury or wound"
+                    },
+                    {
+                        "word" : "피",
+                        "translation" : "blood"
+                    },
+                    {
+                        "word" : "뜨겁다",
+                        "translation" : "to be hot"
+                    },
+                    {
+                        "word" : "목이 쉬다",
+                        "translation" : "to have a hoarse throat"
+                    },
+                    {
+                        "word" : "몸이 떨리다",
+                        "translation" : "to tremble in the body"
+                    },
+                    {
+                        "word" : "긋다",
+                        "translation" : "to draw a line"
+                    },
+                    {
+                        "word" : "낫다",
+                        "translation" : "to get well or recover / to be better"
+                    },
+                    {
+                        "word" : "잇다",
+                        "translation" : "to join or connect"
+                    },
+                    {
+                        "word" : "젓다",
+                        "translation" : "to stir"
+                    },
+                    {
+                        "word" : "짓다",
+                        "translation" : "to build"
+                    },
+                    {
+                        "word" : "약사",
+                        "translation" : "pharmacist"
+                    },
+                    {
+                        "word" : "다치다",
+                        "translation" : "to get hurt or injured"
+                    },
+                    {
+                        "word" : "소독약",
+                        "translation" : "antiseptic"
+                    },
+                    {
+                        "word" : "바르다",
+                        "translation" : "to apply"
+                    },
+                    {
+                        "word" : "치료",
+                        "translation" : "treatment"
+                    },
+                    {
+                        "word" : "치료비",
+                        "translation" : "medical fee"
+                    },
+                    {
+                        "word" : "건강 보험",
+                        "translation" : "health insurance"
+                    },
+                    {
+                        "word" : "감기약",
+                        "translation" : "cold medicine"
+                    },
+                    {
+                        "word" : "기침약",
+                        "translation" : "cough medicine"
+                    },
+                    {
+                        "word" : "두통약",
+                        "translation" : "headache medicine"
+                    },
+                    {
+                        "word" : "몸무게",
+                        "translation" : "person's weight"
+                    },
+                    {
+                        "word" : "변비약",
+                        "translation" : "constipation medicine"
+                    },
+                    {
+                        "word" : "선풍기",
+                        "translation" : "electric fan"
+                    },
+                    {
+                        "word" : "소화제",
+                        "translation" : "digestion medicine"
+                    },
+                    {
+                        "word" : "이상",
+                        "translation" : "the above"
+                    },
+                    {
+                        "word" : "점수",
+                        "translation" : "score"
+                    },
+                    {
+                        "word" : "한약",
+                        "translation" : "herbal medicine"
+                    },
+                    {
+                        "word" : "줄이다",
+                        "translation" : "to reduce"
+                    }
+                ]
+            },
+            
+            "unit17": 
+            {
+                "id": 17,
+                "name": "Hobbies", 
+                "vocabulary": [
+                    {
+                        "word" : "관심",
+                        "translation" : "interest"
+                    },
+                    {
+                        "word" : "아무리",
+                        "translation" : "no matter how"
+                    },
+                    {
+                        "word" : "즐기다",
+                        "translation" : "to enjoy"
+                    },
+                    {
+                        "word" : "무료",
+                        "translation" : "free"
+                    },
+                    {
+                        "word" : "가족 영화",
+                        "translation" : "family movie"
+                    },
+                    {
+                        "word" : "공상 과학 영화",
+                        "translation" : "science fiction movie"
+                    },
+                    {
+                        "word" : "공포 영화",
+                        "translation" : "horror movie"
+                    },
+                    {
+                        "word" : "동물",
+                        "translation" : "animal"
+                    },
+                    {
+                        "word" : "록",
+                        "translation" : "rock"
+                    },
+                    {
+                        "word" : "만화 영화",
+                        "translation" : "animated film"
+                    },
+                    {
+                        "word" : "멜로 영화",
+                        "translation" : "melodramatic movie"
+                    },
+                    {
+                        "word" : "세계",
+                        "translation" : "world"
+                    },
+                    {
+                        "word" : "전쟁 영화",
+                        "translation" : "war movie"
+                    },
+                    {
+                        "word" : "달리다",
+                        "translation" : "to run"
+                    },
+                    {
+                        "word" : "피아노",
+                        "translation" : "piano"
+                    },
+                    {
+                        "word" : "조깅하다",
+                        "translation" : "to go jogging"
+                    },
+                    {
+                        "word" : "치다",
+                        "translation" : "to play (instrument)"
+                    },
+                    {
+                        "word" : "낚시하다",
+                        "translation" : "to fish"
+                    },
+                    {
+                        "word" : "기타",
+                        "translation" : "guitar"
+                    },
+                    {
+                        "word" : "동전",
+                        "translation" : "copper coin"
+                    },
+                    {
+                        "word" : "만화책",
+                        "translation" : "comic book"
+                    },
+                    {
+                        "word" : "볼링",
+                        "translation" : "bowling"
+                    },
+                    {
+                        "word" : "연극",
+                        "translation" : "play"
+                    },
+                    {
+                        "word" : "오토바이",
+                        "translation" : "motorcycle"
+                    },
+                    {
+                        "word" : "매다",
+                        "translation" : "to tie up"
+                    },
+                    {
+                        "word" : "키우다",
+                        "translation" : "to bring up or raise"
+                    },
+                    {
+                        "word" : "당구",
+                        "translation" : "billiards"
+                    },
+                    {
+                        "word" : "드럼",
+                        "translation" : "drum"
+                    },
+                    {
+                        "word" : "물고기",
+                        "translation" : "fish"
+                    },
+                    {
+                        "word" : "새",
+                        "translation" : "bird"
+                    },
+                    {
+                        "word" : "엽서",
+                        "translation" : "postcard"
+                    },
+                    {
+                        "word" : "팩스",
+                        "translation" : "fax"
+                    },
+                    {
+                        "word" : "올리다",
+                        "translation" : "to raise or lift up"
+                    }
+                ]
+            }
         }]
     }
