@@ -1,12 +1,14 @@
 <script setup>
 import { ref } from "vue"
-import dataset from './assets/words.json'
 
 // CONST
 const MAXQUESTION = 10
+const apiUrl = import.meta.env.VITE_API_URL
 
 //JSON
-const units = ref(dataset["datasets"])
+const menuAPI = ref()
+const vocabAPI = ref()
+const nbQuestion = ref()
 
 // text variable
 const questionText = ref("level 1 : Greetings and Introduction")
@@ -28,11 +30,35 @@ let nbRQuestion = MAXQUESTION
 const gameIsOn = ref(false)
 const hideTranslation = ref(true)
 const score = ref(0)
-const nbQuestion = ref(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length)
 const nbTries = ref(0)
 let wordId = 0
 let random = false
 let wordIdRList = []
+
+// --- START --- retrieve data from API function
+async function fetchData(endPoint) {
+  const url = String(apiUrl) + String(endPoint)
+  const r = await fetch(url, {
+    method: 'GET',
+    headers: {
+      "Accept": "application/json"
+    }
+  })
+  if(r.ok === true) {
+    return r.json()
+  }
+  throw new Error('Impossible to contact the server')
+}
+
+function filterByUnitId(data, id) {
+  return data.filter(item => item.unitId  === id)
+}
+
+fetchData('units').then(units => menuAPI.value=units)
+fetchData('vocab').then(vocab => vocabAPI.value = vocab)
+// .then(vocab => nbQuestion.value = filterByUnitId(vocab, currentUnit.value).length)
+nbQuestion.value = 38
+// --- END --- retrieve data from API
 
 function getRandom(max) {
     let value = Math.floor(Math.random() * max)
@@ -51,22 +77,22 @@ function toggleTranslation() {
 }
 
 function resetScore(){
-  if(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length < MAXQUESTION) {
-    nbRQuestion = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
+  if(filterByUnitId(vocabAPI.value, currentUnit.value).length < MAXQUESTION) {
+    nbRQuestion = filterByUnitId(vocabAPI.value, currentUnit.value).length
   } else {
     nbRQuestion = MAXQUESTION
   }
-  random ? nbQuestion.value = nbRQuestion : nbQuestion.value = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
+  random ? nbQuestion.value = nbRQuestion : nbQuestion.value = filterByUnitId(vocabAPI.value, currentUnit.value).length
   nbTries.value = 0
   score.value = 0
   wordId = 0
   wordIdRList.length = 0
-  random ? prepareRQuestion() : null
+  random ? prepareQuestion() : null
 }
 
-function prepareRQuestion () {
+function prepareQuestion () {
   for(let i=0; i<nbRQuestion; i++) {
-    wordIdRList.push(getRandom(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length))
+    wordIdRList.push(getRandom(filterByUnitId(vocabAPI.value, currentUnit.value).length))
   }
 }
 
@@ -92,11 +118,12 @@ function nextWord() {
   gameIsOn.value = true
 
   if(random) {
-    word.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordIdRList[wordId]]["word"]
-    translation.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordIdRList[wordId]]["translation"]
+    word.value = filterByUnitId(vocabAPI.value, currentUnit.value)[wordIdRList[wordId]].word
+    translation.value = filterByUnitId(vocabAPI.value, currentUnit.value)[wordIdRList[wordId]].translation
+    
   } else {
-    word.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["word"]
-    translation.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["translation"]
+    word.value = filterByUnitId(vocabAPI.value, currentUnit.value)[wordId].word
+    translation.value = filterByUnitId(vocabAPI.value, currentUnit.value)[wordId].translation
   }
   
   questionText.value = word.value
@@ -125,8 +152,7 @@ function studyAgain() {
 function changeUnit(level, unit, text) {
   toggleMenu()
 
-  let textLevel = level+1
-  questionText.value = "level " + textLevel + " : " + text
+  questionText.value = "level " + level + " : " + text
   rightButtonText.value = "click to start"
   leftButtonText.value = ""
   translation.value = ""
@@ -161,8 +187,9 @@ function changeUnit(level, unit, text) {
       </div>
       
       <ul class="hiddenMenu unselectable" :class="{'open': menuIsActive}">
-        <li class="hiddenMenuItem" v-for="unit in units[0]" :key="unit.id" @click="changeUnit(0, unit.id, unit.name)">{{ "Level 1 -> " + unit.id + " : " + unit.name }}</li>
-        <li class="hiddenMenuItem" v-for="unit in units[1]" :key="unit.id" @click="changeUnit(1, unit.id, unit.name)">{{ "Level 2 -> " + unit.id + " : " + unit.name }}</li>
+        <li class="hiddenMenuItem" v-for="unit in menuAPI" :key="unit.id" @click="changeUnit(unit.levelId, unit.id, unit.name)">
+          {{ "Level " + unit.levelId + " : " + unit.name }}
+        </li>
       </ul>
     </nav>
 
