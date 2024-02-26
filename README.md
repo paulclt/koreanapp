@@ -1,29 +1,23 @@
 # KoreanApp
 
-The Korean app is a simple flash cards app like for Korean learner. New features will be developped along the way. 
+Available on https://korean.paulclt.com/
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+The Korean app is an open source light vocabulary app for Korean learner.
 
 ## Project Setup
 
-```sh
-npm install
+```bash
+pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+### Start the project
 
-```sh
-npm run dev
+```bash
+pnpm run dev
 ```
 
-### Compile and Minify for Production
+### Build the project
 
-```sh
-npm run build
+```bash
+pnpm run build
 ```
