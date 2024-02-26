@@ -177,7 +177,7 @@ function changeUnit(level, unit, text) {
  
 <style scoped>
 .container {
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: black;
 }
 
