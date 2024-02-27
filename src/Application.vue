@@ -6,6 +6,7 @@ import dataset from './assets/words.json'
 const units = ref(dataset["datasets"])
 
 // text variable
+const menuText = ref("MENU")
 const questionText = ref("level 1 : Greetings and Introduction")
 const rightButtonText = ref("click to start")
 const leftButtonText = ref("")
@@ -41,6 +42,7 @@ function getRandom(max) {
 
 function toggleMenu() {
   menuIsActive.value = !menuIsActive.value
+  menuText.value === "MENU" ? menuText.value = "CLOSE" : menuText.value = "MENU"
 }
 
 function toggleTranslation() {
@@ -123,16 +125,14 @@ function changeUnit(level, unit, text) {
   <div class="container">
     <nav>
       <div class="menu unselectable">
-        <div class="menu-toggle" @click="toggleMenu()">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
+        <div class="menuItem desktopColor" @click="toggleMenu()">
+          <span>{{ menuText }}</span>
         </div>
         <div class="menuItem">
           <span>SCORE : {{ score }}</span>
         </div>
         <div class="menuItem">
-          <span>QUESTION : {{ nbTries + "/" + nbQuestion }}</span>
+          <span>WORD : {{ nbTries + "/" + nbQuestion }}</span>
         </div>
       </div>
       
@@ -181,20 +181,8 @@ nav {
   align-items: center;
 }
 
-.menu-toggle {
-    display: block;
-    padding: 10px;
-}
-
 .menuItem {
   padding: 16px;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: black;
-    margin: 5px 0;
 }
 
 .hiddenMenu {
@@ -276,10 +264,6 @@ main {
 
   .middleGame:hover{
     color: #2980b9;
-  }
-
-  .menu-toggle:hover{
-    background-color: #2980b9;
   }
 
   .desktopColor:hover{
