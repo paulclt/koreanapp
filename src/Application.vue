@@ -2,9 +2,6 @@
 import { ref } from "vue"
 import dataset from './assets/words.json'
 
-// CONST
-const MAXQUESTION = 10
-
 //JSON
 const units = ref(dataset["datasets"])
 
@@ -12,7 +9,6 @@ const units = ref(dataset["datasets"])
 const questionText = ref("level 1 : Greetings and Introduction")
 const rightButtonText = ref("click to start")
 const leftButtonText = ref("")
-const orderText = ref("NOT RANDOM")
 const word = ref("")
 const translation = ref("")
 
@@ -24,15 +20,16 @@ const currentLevel = ref(0)
 const currentUnit = ref(1)
 
 //game logic
-let nbRQuestion = MAXQUESTION
 const gameIsOn = ref(false)
 const hideTranslation = ref(true)
 const score = ref(0)
 const nbQuestion = ref(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length)
 const nbTries = ref(0)
 let wordId = 0
-let random = false
 let wordIdRList = []
+
+//start function
+prepareRQuestion()
 
 function getRandom(max) {
     let value = Math.floor(Math.random() * max)
@@ -51,31 +48,18 @@ function toggleTranslation() {
 }
 
 function resetScore(){
-  if(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length < MAXQUESTION) {
-    nbRQuestion = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
-  } else {
-    nbRQuestion = MAXQUESTION
-  }
-  random ? nbQuestion.value = nbRQuestion : nbQuestion.value = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
+  nbQuestion.value = dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length
   nbTries.value = 0
   score.value = 0
   wordId = 0
   wordIdRList.length = 0
-  random ? prepareRQuestion() : null
+  prepareRQuestion()
 }
 
 function prepareRQuestion () {
-  for(let i=0; i<nbRQuestion; i++) {
+  for(let i=0; i<nbQuestion.value; i++) {
     wordIdRList.push(getRandom(dataset["datasets"][currentLevel.value]["unit" + currentUnit.value]["vocabulary"].length))
   }
-}
-
-function setOrder() {
-  orderText.value === "RANDOM" ? orderText.value = "NOT RANDOM" : orderText.value = "RANDOM"
-  random = !random
-  resetScore()
-  !hideTranslation.value ? toggleTranslation() : null
-  gameIsOn.value ? nextWord() : null
 }
 
 function checkScore(){
@@ -91,13 +75,8 @@ function nextWord() {
 
   gameIsOn.value = true
 
-  if(random) {
-    word.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordIdRList[wordId]]["word"]
-    translation.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordIdRList[wordId]]["translation"]
-  } else {
-    word.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["word"]
-    translation.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordId]["translation"]
-  }
+  word.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordIdRList[wordId]]["word"]
+  translation.value = units.value[currentLevel.value]["unit" + currentUnit.value]["vocabulary"][wordIdRList[wordId]]["translation"]
   
   questionText.value = word.value
   wordId++
@@ -148,9 +127,6 @@ function changeUnit(level, unit, text) {
           <div class="bar"></div>
           <div class="bar"></div>
           <div class="bar"></div>
-        </div>
-        <div class="menuItem desktopColor" @click="setOrder()">
-          <span class="dropbtn">{{ orderText }}</span>
         </div>
         <div class="menuItem">
           <span>SCORE : {{ score }}</span>
