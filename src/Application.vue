@@ -143,19 +143,15 @@ function changeUnit(level, unit, text) {
     </nav>
 
     <main>
-      <div @click="toggleTranslation()" class="middle separation center unselectable" :class="{ middleGame: gameIsOn }"><p>{{ questionText }}</p></div>
-      <div @click="toggleTranslation()" class="middle center unselectable" :class="{ translation: hideTranslation}"><p>{{ translation }}</p></div>
+      <div @click="toggleTranslation()" class="topLeft center unselectable" :class="{ middleGame: gameIsOn }"><p>{{ questionText }}</p></div>
+      <div @click="toggleTranslation()" class="topRight center unselectable" :class="{ translation: hideTranslation}"><p>{{ translation }}</p></div>
       <div @click="studyAgain()" class="bottomLeft center unselectable" :class="{ left: gameIsOn }">{{ leftButtonText }}</div>
-      <div @click="gotIt()" class="bottomRight center unselectable right">{{ rightButtonText }}</div>
+      <div @click="gotIt()" class="bottomRight center unselectable">{{ rightButtonText }}</div>
     </main>
   </div>
 </template>
  
 <style scoped>
-.container {
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
-}
 
 .unselectable {
   -webkit-touch-callout: none;
@@ -167,18 +163,25 @@ function changeUnit(level, unit, text) {
   cursor: default;
 }
 
+.container {
+    height: 98vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
 /* ###--- header START ---### */
 
-nav {
-    background-color: #ecf0f1;
+/* nav {
+    height: 10%;
     padding: 10px 0;
     padding-top: 0px;
     padding-bottom: 0px;
-}
+} */
 
 .menu {
   display: flex;
   align-items: center;
+  height: 10%;
 }
 
 .menuItem {
@@ -212,7 +215,7 @@ nav {
 /* ###--- main START ---### */
 
 main {
-  height: 70vh;
+  height: 90%;
   font-size: 1.5em;
   display: flex;
   flex-direction: row;
@@ -225,14 +228,20 @@ main {
   justify-content: center;
 }
 
-.middle {
-  width: 100%;
-  height: 35%;
-  background-color: white;
+.topLeft {
+  margin-right: 10px;
+  width: 600px;
+  height: 300px;
+  border: solid gray 3px;
+  border-radius: 20px;
 }
 
-.separation {
-  border-bottom: #ecf0f1 solid 4px;
+.topRight {
+  margin-left: 10px;
+  width: 600px;
+  height: 300px;
+  border: solid gray 3px;
+  border-radius: 20px;
 }
 
 .translation {
@@ -240,43 +249,41 @@ main {
 }
 
 .bottomLeft {
-  width: 50%;
-  height: 30%;
-  background-color: white;
-}
-
-.left {
-  background-color: #3498db;
+  margin-right: 10px;
+  width: 600px;
+  height: 300px;
+  border: solid gray 3px;
+  border-radius: 20px;
 }
 
 .bottomRight {
-  width: 50%;
-  height: 30%;
-  background-color: rgb(39, 174, 96);
+  margin-left: 10px;
+  width: 600px;
+  height: 300px;
+  border: solid gray 3px;
+  border-radius: 20px;
 }
 
 /* ###--- main END ---### */
 
 @media screen and (min-width: 1024px) {
-  main {
-    height: 90vh;
-  }
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .middleGame:hover{
+      border-color:#2980b9;
+        color: #2980b9;
+    }
+    
+    .desktopColor:hover{
+        border-color:#2980b9;
+        background-color: #2980b9;
+    }
+    
+    .hiddenMenuItem:hover{
 
-  .middleGame:hover{
-    color: #2980b9;
-  }
-
-  .desktopColor:hover{
-    background-color: #2980b9;
-  }
-
-  .hiddenMenuItem:hover{
-    color: #2980b9;
-  }
-
-  .container {
-    width: 80%;
-    margin: 0 auto;
-  }
+        color: #2980b9;
+    }
 }
 </style>
